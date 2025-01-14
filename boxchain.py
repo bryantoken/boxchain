@@ -91,12 +91,12 @@ def criar_box(tipo, modelo, nome_dispositivo, complemento, comodatario, data_com
     ultimo_bloco = cursor.fetchone()
     
     if ultimo_bloco:
-        chave_anterior = ultimo_bloco[8]
+        chave_anterior = ultimo_bloco[9]  # A chave anterior é a última chave do bloco anterior
         id = ultimo_bloco[0] + 1
     else:
-        chave_anterior = "0"
+        chave_anterior = "0"  # Se for o primeiro bloco, a chave anterior é 0
         id = 1
-        tipo = "Genesis"  # A primeira box será do tipo "Genesis"
+        tipo = "Genesis"  # Primeira box como Genesis
 
     data_transacao = datetime.datetime.now().strftime("%d/%m/%Y")
     novo_box = Box(
